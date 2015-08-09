@@ -1,0 +1,37 @@
+body{
+    /*background:slategray;*/
+}
+.basket1wrapper{
+    float: left;
+}
+.baslet2wrapper{
+    float: left;
+    margin-left: 200px;
+}
+.binBasket{
+    border: 2px solid tomato;
+    width: 200px;
+    height:200px;
+    background-color: threedshadow;
+    margin: 200px 0px 0px 200px;
+}
+#draggable{
+    border: 2px solid tomato;
+    width: 100px;
+    height:20px;
+    border-radius: 10px;    
+}
+.basketContainer1{
+    width: 200px;
+    height:200px;
+    border: 2px solid #eb8f00;
+    background-color: yellow;
+}
+
+.basketContainer2{
+    width: 200px;
+    height:200px;
+    border: 2px solid #eb8f00;
+    background-color: pink;
+}
+
