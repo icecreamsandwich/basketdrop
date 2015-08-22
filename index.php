@@ -12,6 +12,7 @@
     </head>
     <body>
         <h2 align="center">Basket Drop </h2>
+        <div class="wrapper">        
         <div class="basket1wrapper">
             <select class="basketSelect1" id="basketSelect1">
                 <option value="">--Please select a user--</option>
@@ -42,5 +43,6 @@
         <?php
         // put your code here
         ?>
+        </div>
     </body>
 </html>

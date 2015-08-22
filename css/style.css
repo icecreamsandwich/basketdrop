@@ -1,6 +1,9 @@
 body{
     /*background:slategray;*/
 }
+.wrapper{
+ margin-left: 200px;
+}
 .basket1wrapper{
     float: left;
 }
@@ -10,27 +13,27 @@ body{
 }
 .binBasket{
     border: 2px solid tomato;
-    width: 200px;
-    height:200px;
+    width: 300px;
+    height:250px;
     background-color: threedshadow;
     margin: 200px 0px 0px 200px;
 }
-#draggable{
+.draggable{
     border: 2px solid tomato;
     width: 100px;
     height:20px;
     border-radius: 10px;    
 }
 .basketContainer1{
-    width: 200px;
-    height:200px;
+    width: 300px;
+    height:250px;
     border: 2px solid #eb8f00;
     background-color: yellow;
 }
 
 .basketContainer2{
-    width: 200px;
-    height:200px;
+    width: 300px;
+    height:250px;
     border: 2px solid #eb8f00;
     background-color: pink;
 }

@@ -9,7 +9,7 @@ $(document).ready(function(){
     //make container droppables
     $( ".basketContainer2" ).droppable({
         drop: function( event, ui ) {
-             alert("dropped to container2")
+            alert("dropped to container2")
             $( this )
             .addClass( "ui-state-highlight" )
             .find( "p" )
@@ -55,19 +55,51 @@ $(document).ready(function(){
     //load draggable elements to conatainer1
     $("#basketSelect1").on('change',function(){ 
         //create droppable span elements and fill in text area
-        var html = $('<div id="draggable" class="ui-widget-content">draggable</div>');
-      // $(html).insertAfter('.basketSelect1');
-      $(".basketContainer1").html(html);
-       $("#draggable").draggable();
+        //take user items from the db
+        $.post("db_oprations.php", {
+            data: '',
+            action : 'loadbasketContainer'
+        }, function(result) {
+            var jsonObjArray = $.parseJSON(result);
+            var elements  =[];
+            $.each(jsonObjArray, function(index, value) { 
+                userName = value.user_name;
+                user_Id = value.id;
+                var elmnts = $('<div id="" class="draggable ui-widget-content">'+userName+'</div>');
+                elements.push(elmnts);
+            });
+             $(".basketContainer1").html(elements);
+            $(".draggable").draggable();
+        });
+       
+        //        var html = $('<div id="draggable" class="ui-widget-content">draggable</div>');
+        //        // $(html).insertAfter('.basketSelect1');
+        //        $(".basketContainer1").html(html);
+        
     });
     
     //add elements to the basket2 by default
     
     
     //load draggable elements to conatainer2
-    $("#basketSelect1").change(function(){
+    $("#basketSelect2").change(function(){
+        var groupId = $(this).val();
+        $.post("db_oprations.php", {
+            data: groupId,
+            action : 'loadbasketContainer2'
+        }, function(result) {
+            var jsonObjArray = $.parseJSON(result);
         
+            $.each(jsonObjArray, function(index, value) { 
+                userName = value.user_name;
+                user_Id = value.id;
+                var elements = $('<div id="" class="draggable ui-widget-content">'+userName+'</div>');
+                $(".basketContainer2").html(elements);              
+            });
+            $(".draggable").draggable();
         });
+        
+    });
     
 //droppable elements callbaack
     
