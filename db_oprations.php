@@ -65,9 +65,10 @@ switch ($action) {
         break;
     case 'loadbasketContainer2':
         $group_id = $_POST['data'];
-        $result = mysql_query("select * from usergroup_user_map uum where uum.id=$group_id
+        $result = mysql_query("select * from usergroup_user_map uum 
                 LEFT JOIN users u ON uum.user_id=u.id
-                LEFT JOIN user_group ug ON uum.group_id=ug.id");
+                LEFT JOIN user_group ug ON uum.user_group=ug.id 
+                where uum.user_group=$group_id");
         if ($result) {
             $jsonData = array();
             while ($array = mysql_fetch_row($result, MYSQL_ASSOC)) {

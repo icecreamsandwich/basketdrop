@@ -4,14 +4,17 @@
  */
 
 $(document).ready(function(){
+    dropped = false;
     //make draggable elements
     $("#draggable").draggable();
     //make container droppables
     $( ".basketContainer2" ).droppable({
         drop: function( event, ui ) {
             alert("dropped to container2")
+            dropped =true;
             $( this )
             .addClass( "ui-state-highlight" )
+            .css("background-color","#50D050")
             .find( "p" )
             .html( "Dropped!" );
         }
@@ -19,8 +22,10 @@ $(document).ready(function(){
     $( ".binBasket" ).droppable({
         drop: function( event, ui ) {
             alert("dropped bin")
+            dropped =true;
             $( this )
             .addClass( "ui-state-highlight" )
+            .css("background-color","yellowgreen")
             .find( "p" )
             .html( "Dropped!" );
         }
@@ -62,20 +67,30 @@ $(document).ready(function(){
         }, function(result) {
             var jsonObjArray = $.parseJSON(result);
             var elements  =[];
-            $.each(jsonObjArray, function(index, value) { 
+            $.each(jsonObjArray, function(index, value) {
+                var color = getRandomColor();
                 userName = value.user_name;
                 user_Id = value.id;
-                var elmnts = $('<div id="" class="draggable ui-widget-content">'+userName+'</div>');
+                var elmnts = $('<div id="" style="background-color:'+color+'" class="draggable ui-widget-content">'+userName+'</div>');
                 elements.push(elmnts);
             });
-             $(".basketContainer1").html(elements);
-            $(".draggable").draggable();
+            $(".basketContainer1").html(elements);
+            $(".draggable").draggable({ 
+               
+                revert:  function(dropped) {  
+                    alert(dropped)
+                    // var dropped = dropped && dropped[0].id == "droppable";
+                    if(!dropped)// alert("I'm reverting!");
+                        return !dropped;
+                } 
+            }).each(function() {
+                var top = $(this).position().top;
+                var left = $(this).position().left;
+                $(this).data('orgTop', top);
+                $(this).data('orgLeft', left);
+            });
         });
        
-        //        var html = $('<div id="draggable" class="ui-widget-content">draggable</div>');
-        //        // $(html).insertAfter('.basketSelect1');
-        //        $(".basketContainer1").html(html);
-        
     });
     
     //add elements to the basket2 by default
@@ -89,13 +104,15 @@ $(document).ready(function(){
             action : 'loadbasketContainer2'
         }, function(result) {
             var jsonObjArray = $.parseJSON(result);
-        
-            $.each(jsonObjArray, function(index, value) { 
+            var elements  =[];
+            $.each(jsonObjArray, function(index, value) {   
+                var color = getRandomColor();
                 userName = value.user_name;
                 user_Id = value.id;
-                var elements = $('<div id="" class="draggable ui-widget-content">'+userName+'</div>');
-                $(".basketContainer2").html(elements);              
+                var elmnts = $('<div id="" style="background-color:'+color+'" class="draggable ui-widget-content">'+userName+'</div>');
+                elements.push(elmnts);                             
             });
+            $(".basketContainer2").html(elements); 
             $(".draggable").draggable();
         });
         
@@ -105,5 +122,17 @@ $(document).ready(function(){
     
     
 //delete elements on dropping bin basket
+
+   
     
 });
+
+//random color generator to give the bg color for draggables
+function getRandomColor() { 
+    var letters = '0123456789ABCDEF'.split('');
+    var color = '#';
+    for (var i = 0; i < 6; i++ ) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
