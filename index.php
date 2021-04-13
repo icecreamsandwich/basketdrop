@@ -14,22 +14,24 @@
         <h2 align="center">Basket Drop </h2>
         <div class="wrapper">        
         <div class="basket1wrapper">
-            <select class="basketSelect1" id="basketSelect1">
+            <!-- <select class="basketSelect1" id="basketSelect1">
                 <option value="">--Please select a user--</option>
-            </select>
+            </select> -->
             <br/>
             <!-- Elements container for basket1 -->
             <div class="basketContainer1" >
+            <h3>Items</h3>
             </div>
         </div>
         <div class="baslet2wrapper">
-            <select class="basketSelect2" id="basketSelect2">
+           <!--  <select class="basketSelect2" id="basketSelect2">
                 <option value="">--Please select a user group--</option>
-            </select>
+            </select> -->
             <br/>
             <!-- Elements container for basket2 -->
            
-            <div class="basketContainer2">
+            <div class="basketContainer2" id="basketContainer2">
+            <h3>Cart items</h3>
                  <p>Drop here</p>
             </div>
         </div>
@@ -37,8 +39,13 @@
         <br/><br/> <br/><br/>
         <div class="binBasket">
             <!-- The bin basket container -->
-            <p>bin basket</p>
+            <h3>Wish list items</h3>
         </div>
+
+        <!-- <br/><br/> <br/><br/>
+        <div class="binBasket">
+            <p>bin basket</p>
+        </div> -->
         <!--        <div id="draggable" class="ui-widget-content">draggable</div>-->
         <?php
         // put your code here

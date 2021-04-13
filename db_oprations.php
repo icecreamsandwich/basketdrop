@@ -1,7 +1,7 @@
 <?php
 
-include("connection.php");
-
+//include("connection.php");
+$con = mysqli_connect("localhost", "root", "mZS*uKqRDCeJxO9", "basketdrop");
 $action = $_POST['action'];
 
 // get current date and time
@@ -10,10 +10,10 @@ $creatred_at = date('d/m/Y h:i:s a', time());
 
 switch ($action) {
     case 'loadbasket1':
-        $result = mysql_query("select * from users");
+        $result = mysqli_query($con,"select * from users");
         if ($result) {
             $jsonData = array();
-            while ($array = mysql_fetch_row($result, MYSQL_ASSOC)) {
+            while ($array = mysqli_fetch_assoc($result)) {
                 $jsonData[] = $array;
             }
             foreach ($jsonData as $key => $value) {
@@ -23,15 +23,14 @@ switch ($action) {
             array_push($jsonData, $row_array);
             echo json_encode($jsonData);
         }
-
         else
-            echo mysql_error();
+           echo mysqli_errno($con)."\n";
         break;
     case 'loadbasket2':
-        $result = mysql_query("select * from user_group");
+        $result = mysqli_query($con,"select * from user_group");
         if ($result) {
             $jsonData = array();
-            while ($array = mysql_fetch_row($result, MYSQL_ASSOC)) {
+            while ($array = mysqli_fetch_assoc($result)) {
                 $jsonData[] = $array;
             }
             foreach ($jsonData as $key => $value) {
@@ -43,13 +42,13 @@ switch ($action) {
         }
 
         else
-            echo mysql_error();
+            echo mysqli_errno($con) . "\n";
         break;
     case 'loadbasketContainer':
-        $result = mysql_query("select * from users");
+        $result = mysqli_query($con,"select * from users");
         if ($result) {
             $jsonData = array();
-            while ($array = mysql_fetch_row($result, MYSQL_ASSOC)) {
+            while ($array = mysqli_fetch_assoc($result)) {
                 $jsonData[] = $array;
             }
             foreach ($jsonData as $key => $value) {
@@ -61,17 +60,17 @@ switch ($action) {
         }
 
         else
-            echo mysql_error();
+            echo mysqli_errno($con) . "\n";
         break;
     case 'loadbasketContainer2':
         $group_id = $_POST['data'];
-        $result = mysql_query("select * from usergroup_user_map uum 
+        $result = mysqli_query($con,"select * from usergroup_user_map uum 
                 LEFT JOIN users u ON uum.user_id=u.id
                 LEFT JOIN user_group ug ON uum.user_group=ug.id 
                 where uum.user_group=$group_id");
         if ($result) {
             $jsonData = array();
-            while ($array = mysql_fetch_row($result, MYSQL_ASSOC)) {
+            while ($array = mysqli_fetch_assoc($result)) {
                 $jsonData[] = $array;
             }
             foreach ($jsonData as $key => $value) {
@@ -84,7 +83,7 @@ switch ($action) {
         }
 
         else
-            echo mysql_error();
+            echo mysqli_errno($con) . "\n";
         break;
     default:
         break;

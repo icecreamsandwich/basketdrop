@@ -16,18 +16,18 @@ body{
     width: 300px;
     height:250px;
     background-color: threedshadow;
-    margin: 230px 0px 0px 200px;
+    margin: 250px 0px 0px 500px;
 }
 .draggable{
     border: 2px solid tomato;
-    width: 100px;
+    width: 200px;
     height:20px;
     border-radius: 10px;
     text-align: center;
 }
 .basketContainer1{
     width: 300px;
-    height:250px;
+    height:auto;
     border: 2px solid #eb8f00;
     background-color: yellow;
 }
@@ -39,3 +39,6 @@ body{
     background-color: pink;
 }
 
+.span_btn{
+   /*  float: left; */
+}
