@@ -2,7 +2,7 @@ body{
     /*background:slategray;*/
 }
 .wrapper{
- margin-left: 200px;
+ /* margin-left: 200px; */
 }
 .basket1wrapper{
     float: left;
@@ -15,6 +15,7 @@ body{
     border: 2px solid tomato;
     width: 300px;
     height:250px;
+    float: left;
     background-color: threedshadow;
     margin: 250px 0px 0px 500px;
 }
@@ -53,4 +54,8 @@ table {
   
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+  .cart_table{
+      float: left;
+      margin-left: 100px;
   }

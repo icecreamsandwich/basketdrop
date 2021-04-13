@@ -98,6 +98,7 @@ $(document).ready(function () {
         data: '',
         action: 'loadbasketContainer'
     }, function (result) {
+        var total = 0;
         var jsonObjArray = $.parseJSON(result);
         var elements = [];
         $.each(jsonObjArray, function (index, value) {
@@ -122,7 +123,7 @@ $(document).ready(function () {
             console.log("Top: " + b.top + " Left: " + b.left)
             //calculate x and y to the cart div
             const rand = Math.floor(Math.random() * 15);
-            var moveX = x.top > b.top ?   -(x.top - b.top)+10*rand : b.top - x.top;
+            var moveX = x.top > b.top ?   -(x.top - b.top)+20*rand : b.top - x.top;
             var moveY = x.left > b.left ?   x.left - b.left : b.left - x.left;
             console.log(moveX, moveY)
            $("div[id=" + id + "]").animate({top:moveX, left:moveY}, 1000, finished(id, itemName, price))
@@ -133,7 +134,11 @@ $(document).ready(function () {
             $('span[id='+id+']').remove()
           //  alert("item added to cart")
           //apend items to the table and total it
+          total += price;
           $('#cart_tbl tr:last').after('<tr><td>'+itemName+'</td><td>'+price+'</td></tr>');
+
+          const spanHtml = '<span> Total : '+total+'</span>'
+          $(".total").html(spanHtml)
         }
     });
 
