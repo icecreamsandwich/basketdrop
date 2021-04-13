@@ -54,6 +54,7 @@ switch ($action) {
             foreach ($jsonData as $key => $value) {
                 $row_array['id'] = $value['id'];
                 $row_array['user_name'] = $value['user_name'];
+                $row_array['price'] = $value['price'];
             }
             array_push($jsonData, $row_array);
             echo json_encode($jsonData);

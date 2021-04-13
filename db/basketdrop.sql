@@ -64,17 +64,17 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`) VALUES
-(1, 'muneeb'),
-(2, 'adeeb'),
-(3, 'mufeeda'),
-(4, 'sameet'),
-(5, 'saffer'),
-(6, 'sahnsu'),
-(7, 'abari'),
-(8, 'baba'),
-(9, 'kkunjappa'),
-(10, 'ashik');
+INSERT INTO `users` (`id`, `user_name`,`price`) VALUES
+(1, 'Pen', 25),
+(2, 'Pencil', 15),
+(3, 'Book', 35),
+(4, 'Showcase', 250),
+(5, 'Clock', 100),
+(6, 'Wallet', 230),
+(7, 'Shoes', 200),
+(8, 'Rack', 45),
+(9, 'Backpack', 450),
+(10, 'Bulb', 90);
 
 -- --------------------------------------------------------
 

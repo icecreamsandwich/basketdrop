@@ -102,11 +102,12 @@ $(document).ready(function () {
         var elements = [];
         $.each(jsonObjArray, function (index, value) {
             var color = getRandomColor();
-            userName = value.user_name;
-            user_Id = value.id;
-            var elmnts = $('<div id=' + user_Id + ' style="background-color:' + color +
+            var userName = value.user_name;
+            var user_Id = value.id;
+            var price = value.price;
+            var elmnts = $('<div data-price='+price+' id=' + user_Id + ' style="background-color:' + color +
                 '" class="draggable ui-widget-content">' + userName +
-                '</div><span class="span_btn"><button id=' + user_Id + ' class="btn_cart">Add to cart</button></span>');
+                '</div><span class="span_btn" id='+user_Id+'><button id=' + user_Id + ' class="btn_cart">Add to cart</button></span>');
             elements.push(elmnts);
         });
         $(".basketContainer1").html(elements);
@@ -115,21 +116,24 @@ $(document).ready(function () {
             var x = $(this).position();
             console.log("Top: " + x.top + " Left: " + x.left);
             const id = $(this).attr('id')
+            var itemName = $("div[id=" + id + "]").html()
+            var price = $("div[id=" + id + "]").data('price')
             var b = $("#basketContainer2").position();
             console.log("Top: " + b.top + " Left: " + b.left)
             //calculate x and y to the cart div
             const rand = Math.floor(Math.random() * 15);
-            console.log(rand)
             var moveX = x.top > b.top ?   -(x.top - b.top)+10*rand : b.top - x.top;
             var moveY = x.left > b.left ?   x.left - b.left : b.left - x.left;
             console.log(moveX, moveY)
-           //$("div[id=" + id + "]").animate({top:-24, left:502}, 2000)
-           $("div[id=" + id + "]").animate({top:moveX, left:moveY}, 2000)
+           $("div[id=" + id + "]").animate({top:moveX, left:moveY}, 1000, finished(id, itemName, price))
         })
-        function finished() {
-            $(this).removeClass("ui-draggable")
-            $(this).removeClass("draggable")
+        function finished(id, itemName, price) {
+            /* $(this).removeClass("ui-draggable")
+            $(this).removeClass("draggable") */
+            $('span[id='+id+']').remove()
           //  alert("item added to cart")
+          //apend items to the table and total it
+          $('#cart_tbl tr:last').after('<tr><td>'+itemName+'</td><td>'+price+'</td></tr>');
         }
     });
 

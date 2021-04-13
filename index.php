@@ -1,42 +1,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-            <title>Basket Drop</title>
-            <link href="css/style.css" rel="stylesheet" type="text/css"/>
-            <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
-            <script src="js/jquery-1.9.0.js" type="text/javascript" lang="javascript"></script>
-            <script src="js/jquery-ui.min.js" type="text/javascript" lang="javascript"></script>
-            <script src="js/basketdrop.js"  type="text/javascript"></script>
 
-    </head>
-    <body>
-        <h2 align="center">Basket Drop </h2>
-        <div class="wrapper">        
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Basket Drop</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/jquery-ui.min.css" rel="stylesheet" type="text/css" />
+    <script src="js/jquery-1.9.0.js" type="text/javascript" lang="javascript"></script>
+    <script src="js/jquery-ui.min.js" type="text/javascript" lang="javascript"></script>
+    <script src="js/basketdrop.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+    <h2 align="center">Basket Drop </h2>
+    <div class="wrapper">
         <div class="basket1wrapper">
             <!-- <select class="basketSelect1" id="basketSelect1">
                 <option value="">--Please select a user--</option>
             </select> -->
-            <br/>
+            <br />
             <!-- Elements container for basket1 -->
-            <div class="basketContainer1" >
-            <h3>Items</h3>
+            <div class="basketContainer1">
+                <h3>Items</h3>
             </div>
         </div>
         <div class="baslet2wrapper">
-           <!--  <select class="basketSelect2" id="basketSelect2">
+            <!--  <select class="basketSelect2" id="basketSelect2">
                 <option value="">--Please select a user group--</option>
             </select> -->
-            <br/>
+            <br />
             <!-- Elements container for basket2 -->
-           
+
             <div class="basketContainer2" id="basketContainer2">
-            <h3>Cart items</h3>
-                 <p>Drop here</p>
+                <h3>Cart items</h3>
+                <p>Drop here</p>
             </div>
         </div>
 
-        <br/><br/> <br/><br/>
+        <br /><br /> <br /><br />
         <div class="binBasket">
             <!-- The bin basket container -->
             <h3>Wish list items</h3>
@@ -50,6 +52,24 @@
         <?php
         // put your code here
         ?>
-        </div>
-    </body>
+    </div>
+    <div class="cart_table">
+        <h2>Cart</h2>
+        <table style="width:50%" id="cart_tbl">
+            <tr>
+                <th>Item</th>
+                <th>price</th>
+            </tr>
+           <!--  <tr>
+                <td>Jill</td>
+                <td>Smith</td>
+            </tr>
+            <tr>
+                <td>Eve</td>
+                <td>Jackson</td>
+            </tr> -->
+        </table>
+    </div>
+</body>
+
 </html>
